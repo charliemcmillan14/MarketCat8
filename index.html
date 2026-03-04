@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MarketCat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/app.css" />
+</head>
+<body>
+  <div id="root">
+    <!-- Auth screen -->
+    <div id="authView" class="auth-wrap">
+      <div class="auth-card">
+        <div class="brand">
+          <div class="logo">MC</div>
+          <div>
+            <div class="brand-name">MarketCat</div>
+            <div class="brand-sub">Real-time markets for $5/mo</div>
+          </div>
+        </div>
+
+        <div class="tabs">
+          <button id="tabSignIn" class="tab active">Sign in</button>
+          <button id="tabSignUp" class="tab">Create account</button>
+        </div>
+
+        <form id="authForm" class="auth-form">
+          <label>Email</label>
+          <input id="email" type="email" autocomplete="email" required />
+          <label>Password</label>
+          <input id="password" type="password" autocomplete="current-password" required />
+
+          <button id="authBtn" type="submit" class="primary">Sign in</button>
+          <div id="authMsg" class="auth-msg"></div>
+        </form>
+
+        <div class="fineprint">
+          By continuing, you agree MarketCat is for education only. No financial advice.
+        </div>
+      </div>
+    </div>
+
+    <!-- App screen -->
+    <div id="appView" class="hidden">
+      <!-- Top ticker bar -->
+      <div class="topbar">
+        <div class="topbar-left">
+          <div class="pill">LIVE</div>
+          <div id="liveStrip" class="live-strip"></div>
+        </div>
+        <div class="topbar-right">
+          <span id="userEmail" class="muted"></span>
+          <button id="logoutBtn" class="ghost">Log out</button>
+        </div>
+      </div>
+
+      <!-- Main layout -->
+      <div class="layout">
+        <aside class="nav">
+          <div class="nav-title">Workspace</div>
+          <button class="nav-item active" data-route="markets">Markets</button>
+          <button class="nav-item" data-route="watchlist">Watchlist</button>
+          <button class="nav-item" data-route="portfolio">Paper Portfolio</button>
+          <button class="nav-item" data-route="news">News</button>
+          <button class="nav-item" data-route="macro">Macro</button>
+          <div class="nav-footer muted">MarketCat v1</div>
+        </aside>
+
+        <main class="main">
+          <div class="header">
+            <div>
+              <div id="pageTitle" class="h1">Markets</div>
+              <div id="pageSub" class="sub">Real quotes, news, and paper trading.</div>
+            </div>
+            <div class="search">
+              <input id="globalSearch" placeholder="Search ticker (e.g. AAPL, TSLA, BTC)" />
+              <button id="searchBtn" class="primary">Go</button>
+            </div>
+          </div>
+
+          <section id="page"></section>
+        </main>
+      </div>
+
+      <div id="toast" class="toast hidden"></div>
+    </div>
+  </div>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
